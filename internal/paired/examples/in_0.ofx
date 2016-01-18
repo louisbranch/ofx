@@ -1,0 +1,11 @@
+<OFX>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <TRNUID>23382938
+      <STATUS>
+        <CODE>0
+        <SEVERITY>INFO
+      </STATUS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>
