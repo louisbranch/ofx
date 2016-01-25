@@ -6,10 +6,16 @@ import (
 	"fmt"
 	"io"
 	"strings"
+
+	"golang.org/x/text/encoding/charmap"
+	"golang.org/x/text/transform"
 )
 
 func EndTags(in io.Reader) ([]byte, error) {
-	dec := xml.NewDecoder(in)
+	t := charmap.Windows1252
+	r := transform.NewReader(in, t.NewDecoder())
+	dec := xml.NewDecoder(r)
+
 	var buf bytes.Buffer
 	var prev struct {
 		name    string

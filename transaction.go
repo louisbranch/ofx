@@ -43,7 +43,7 @@ type Transaction struct {
 	ReferenceNumber   string          `xml:"REFNUM,omitempty"`
 	StdIndustrialCode string          `xml:"SIC"`
 	PayeeID           string          `xml:"PAYEEID,omitempty"`
-	Name              string          `xml:"NAME,omitempty"`
+	Name              string          `xml:"NAME"`
 	Memo              string          `xml:"MEMO,omitempty"`
 	/*
 		TODO

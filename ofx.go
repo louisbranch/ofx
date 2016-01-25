@@ -50,7 +50,7 @@ func Parse(in io.Reader) (*OFX, error) {
 	ofx := &OFX{}
 	f, err := paired.EndTags(in)
 	if err != nil {
-		return ofx, err
+		return nil, err
 	}
 	err = xml.Unmarshal(f, &ofx)
 	return ofx, err

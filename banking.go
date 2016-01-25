@@ -1,19 +1,17 @@
 package ofx
 
-import "encoding/xml"
-
 type Banking struct {
 	BankingResponse []BankingResponse `xml:"STMTTRNRS"`
 }
 
 type BankingResponse struct {
-	TransactionUID TransactionUID `xml:"TRNUID"`
-	ClientCookie   string         `xml:"CLTCOOKIE,omitempty"`
-	Status         Status         `xml:"STATUS"`
+	TransactionUID        TransactionUID        `xml:"TRNUID"`
+	ClientCookie          string                `xml:"CLTCOOKIE,omitempty"`
+	Status                Status                `xml:"STATUS"`
+	BankStatementResponse BankStatementResponse `xml:"STMTRS"`
 }
 
 type BankStatementResponse struct {
-	XMLName              xml.Name             `xml:"STMTRS"`
 	CurrencyDefault      CurrencySymbol       `xml:"CURDEF"`
 	BankingAccount       BankingAccount       `xml:"BANKACCTFROM"`
 	BankTransactionsList BankTransactionsList `xml:"BANKTRANLIST,omitempty"`

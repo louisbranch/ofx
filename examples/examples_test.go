@@ -10,11 +10,13 @@ import (
 )
 
 func TestParse(t *testing.T) {
+
 	egs := []struct {
 		file string
 		res  *ofx.OFX
 	}{
 		{"ccstmtrs", CCStmtRs},
+		{"desjardins", Desjardins},
 	}
 
 	for _, eg := range egs {
