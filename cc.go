@@ -1,21 +1,19 @@
 package ofx
 
-import "encoding/xml"
-
 type CreditCard struct {
-	TransactionResponseResponse struct {
-		XMLName                     xml.Name `xml:"CCSTMTTRNRS"`
-		TransactionUID              `xml:"TRNUID"`
-		ClientCookie                string `xml:"CLTCOOKIE,omitempty"`
-		Status                      Status
-		CreditCardStatementResponse CreditCardStatementResponse
-	}
+	CreditCardResponse []CreditCardResponse `xml:"CCSTMTTRNRS"`
+}
+
+type CreditCardResponse struct {
+	TransactionUID              TransactionUID              `xml:"TRNUID"`
+	ClientCookie                string                      `xml:"CLTCOOKIE,omitempty"`
+	Status                      Status                      `xml:"STATUS"`
+	CreditCardStatementResponse CreditCardStatementResponse `xml:"CCSTMTRS"`
 }
 
 type CreditCardStatementResponse struct {
-	XMLName              xml.Name       `xml:"CCSTMTRS"`
-	CurrencyDefault      CurrencySymbol `xml:"CURDEF"`
-	CreditCardAccount    CreditCardAccount
+	CurrencyDefault      CurrencySymbol       `xml:"CURDEF"`
+	CreditCardAccount    CreditCardAccount    `xml:"CCACCTFROM"`
 	BankTransactionsList BankTransactionsList `xml:"BANKTRANLIST,omitempty"`
 	LedgerBalance        Balance              `xml:"LEDGERBAL"`
 	AvailableBalance     Balance              `xml:"AVAILBAL,omitempty"`
@@ -23,7 +21,6 @@ type CreditCardStatementResponse struct {
 }
 
 type CreditCardAccount struct {
-	XMLName xml.Name `xml:"CCACCTFROM"`
-	ID      string   `xml:"ACCTID"`
-	Key     string   `xml:"ACCTKEY,omitempty"`
+	ID  string `xml:"ACCTID"`
+	Key string `xml:"ACCTKEY,omitempty"`
 }

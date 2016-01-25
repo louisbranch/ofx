@@ -3,19 +3,19 @@ package ofx
 import "encoding/xml"
 
 type Banking struct {
-	TransactionResponseResponse struct {
-		XMLName        xml.Name `xml:"STMTTRNRS"`
-		TransactionUID `xml:"TRNUID"`
-		ClientCookie   string `xml:"CLTCOOKIE,omitempty"`
-		Status         Status
-		BankingAccount BankingAccount
-	}
+	BankingResponse []BankingResponse `xml:"STMTTRNRS"`
+}
+
+type BankingResponse struct {
+	TransactionUID TransactionUID `xml:"TRNUID"`
+	ClientCookie   string         `xml:"CLTCOOKIE,omitempty"`
+	Status         Status         `xml:"STATUS"`
 }
 
 type BankStatementResponse struct {
-	XMLName              xml.Name       `xml:"STMTRS"`
-	CurrencyDefault      CurrencySymbol `xml:"CURDEF"`
-	BankingAccount       BankingAccount
+	XMLName              xml.Name             `xml:"STMTRS"`
+	CurrencyDefault      CurrencySymbol       `xml:"CURDEF"`
+	BankingAccount       BankingAccount       `xml:"BANKACCTFROM"`
 	BankTransactionsList BankTransactionsList `xml:"BANKTRANLIST,omitempty"`
 	LedgerBalance        Balance              `xml:"LEDGERBAL"`
 	AvailableBalance     Balance              `xml:"AVAILBAL,omitempty"`
@@ -23,10 +23,9 @@ type BankStatementResponse struct {
 }
 
 type BankingAccount struct {
-	XMLName     xml.Name `xml:"BANKACCTFROM"`
-	BankID      string   `xml:"BANKID"`
-	BranchID    string   `xml:"BRANCHID,omitempty"`
-	ID          string   `xml:"ACCTID"`
-	AccountType `xml:"ACCTTYPE"`
-	Key         string `xml:"ACCTKEY,omitempty"`
+	BankID      string      `xml:"BANKID"`
+	BranchID    string      `xml:"BRANCHID,omitempty"`
+	ID          string      `xml:"ACCTID"`
+	AccountType AccountType `xml:"ACCTTYPE"`
+	Key         string      `xml:"ACCTKEY,omitempty"`
 }

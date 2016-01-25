@@ -30,15 +30,14 @@ type OFX struct {
 }
 
 type Status struct {
-	XMLName  xml.Name   `xml:"STATUS"`
 	Code     StatusCode `xml:"CODE"`
 	Severity Severity   `xml:"SEVERITY"`
 	Message  string     `xml:"MESSAGE,omitempty"`
 }
 
 type Balance struct {
-	Amount        string `xml:"BALAMT"`
-	EffectiveDate string `xml:"DTASOF"`
+	Amount        float64  `xml:"BALAMT"`
+	EffectiveDate DateTime `xml:"DTASOF"`
 }
 
 type BankTransactionsList struct {
