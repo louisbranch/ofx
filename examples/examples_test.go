@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/luizbranco/ofx"
 )
 
@@ -31,7 +32,8 @@ func TestParse(t *testing.T) {
 			t.Errorf("Parse unexpected error file %s, %s", eg.file, err)
 		}
 		if !reflect.DeepEqual(eg.res, res) {
-			t.Errorf("Parse expected file %s\n%s\ngot\n%s", eg.file, eg.res, res)
+			t.Errorf("Parse expected file %s\n", eg.file)
+			spew.Dump(eg.res, res)
 		}
 	}
 }

@@ -91,7 +91,7 @@ var Desjardins = &ofx.OFX{
 								DatePosted:        ofx.DateTime("20080123"),
 								TransactionAmount: 1000,
 								FITID:             "CtC1NAPjr",
-								Name:              "Placement/IGN",
+								Name:              "Placement/ING",
 								Memo:              "DI",
 							},
 							{
@@ -99,7 +99,7 @@ var Desjardins = &ofx.OFX{
 								DatePosted:        ofx.DateTime("20080128"),
 								TransactionAmount: 700,
 								FITID:             "gnxzQAPk2",
-								Name:              "Placement/IGN",
+								Name:              "Placement/ING",
 								Memo:              "DI",
 							},
 							{
@@ -109,7 +109,7 @@ var Desjardins = &ofx.OFX{
 								FITID:             "UH7ZRAEYE",
 								CheckNumber:       "10",
 								Name:              "Chèque/",
-								Memo:              "DI",
+								Memo:              "DCN",
 							},
 							{
 								TransactionType:   ofx.Credit,
@@ -123,7 +123,7 @@ var Desjardins = &ofx.OFX{
 								TransactionType:   ofx.Credit,
 								DatePosted:        ofx.DateTime("20080201"),
 								TransactionAmount: 2613.03,
-								FITID:             ";WXMTAMse",
+								FITID:             ":WXMTAMse",
 								Name:              "Dépôt au comptoir/",
 								Memo:              "DSL",
 							},
@@ -185,6 +185,90 @@ var Desjardins = &ofx.OFX{
 					},
 					AvailableBalance: ofx.Balance{
 						Amount:        3925.84,
+						EffectiveDate: ofx.DateTime("20080212160227"),
+					},
+				},
+			},
+			{
+				TransactionUID: ofx.TransactionUID("DESJ-2008021216022711068"),
+				Status: ofx.Status{
+					Code:     0,
+					Severity: ofx.Info,
+					Message:  "OK",
+				},
+				BankStatementResponse: ofx.BankStatementResponse{
+					CurrencyDefault: ofx.CurrencySymbol("CAD"),
+					BankingAccount: ofx.BankingAccount{
+						BankID:      "700000100",
+						BranchID:    "0389347",
+						ID:          "815-30219-54321-ES1",
+						AccountType: ofx.Savings,
+					},
+					BankTransactionsList: ofx.BankTransactionsList{
+						DateStart: ofx.Date("20080113000000"),
+						DateEnd:   ofx.Date("20080212000000"),
+					},
+					LedgerBalance: ofx.Balance{
+						Amount:        0,
+						EffectiveDate: ofx.DateTime("20080212160227"),
+					},
+					AvailableBalance: ofx.Balance{
+						Amount:        0,
+						EffectiveDate: ofx.DateTime("20080212160227"),
+					},
+				},
+			},
+			{
+				TransactionUID: ofx.TransactionUID("DESJ-2008021216022711068"),
+				Status: ofx.Status{
+					Code:     0,
+					Severity: ofx.Info,
+					Message:  "OK",
+				},
+				BankStatementResponse: ofx.BankStatementResponse{
+					CurrencyDefault: ofx.CurrencySymbol("USD"),
+					BankingAccount: ofx.BankingAccount{
+						BankID:      "1234",
+						BranchID:    "5678",
+						ID:          "815-30219-11111-EOP",
+						AccountType: ofx.Checking,
+					},
+					BankTransactionsList: ofx.BankTransactionsList{
+						DateStart: ofx.Date("20080113000000"),
+						DateEnd:   ofx.Date("20080212000000"),
+						Transactions: []ofx.Transaction{
+							{
+								TransactionType:   ofx.Credit,
+								DatePosted:        ofx.DateTime("20080131"),
+								TransactionAmount: 0.02,
+								FITID:             "e7NmSAWtn",
+								Name:              "Intérêt sur EOP/",
+								Memo:              "INT",
+							},
+							{
+								TransactionType:   ofx.Credit,
+								DatePosted:        ofx.DateTime("20080201"),
+								TransactionAmount: 5029.50,
+								FITID:             "qWXMTAMiq",
+								Name:              "Dépôt au comptoir/",
+								Memo:              "DSL",
+							},
+							{
+								TransactionType:   ofx.Debit,
+								DatePosted:        ofx.DateTime("20080201"),
+								TransactionAmount: -2665,
+								FITID:             "uWXMTAMqA",
+								Name:              "Retrait au comptoir/",
+								Memo:              "RSL",
+							},
+						},
+					},
+					LedgerBalance: ofx.Balance{
+						Amount:        3046.90,
+						EffectiveDate: ofx.DateTime("20080212160227"),
+					},
+					AvailableBalance: ofx.Balance{
+						Amount:        3046.90,
 						EffectiveDate: ofx.DateTime("20080212160227"),
 					},
 				},
