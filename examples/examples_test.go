@@ -18,6 +18,7 @@ func TestParse(t *testing.T) {
 	}{
 		{"ccstmtrs", CCStmtRs},
 		{"desjardins", Desjardins},
+		{"response", Response},
 	}
 
 	for _, eg := range egs {
