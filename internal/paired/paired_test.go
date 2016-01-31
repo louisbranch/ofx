@@ -17,8 +17,8 @@ func TestEndTags(t *testing.T) {
 
 	for i, ok := range egs {
 		var buf bytes.Buffer
-		in, _ := os.Open(path.Join("examples", fmt.Sprintf("in_%d.ofx", i)))
-		f, _ := os.Open(path.Join("examples", fmt.Sprintf("out_%d.ofx", i)))
+		in, _ := os.Open(path.Join("samples", fmt.Sprintf("in_%d.ofx", i)))
+		f, _ := os.Open(path.Join("samples", fmt.Sprintf("out_%d.ofx", i)))
 
 		tr := charmap.Windows1252
 		r := transform.NewReader(f, tr.NewDecoder())

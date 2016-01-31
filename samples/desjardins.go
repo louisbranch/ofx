@@ -1,4 +1,4 @@
-package examples
+package samples
 
 import "github.com/luizbranco/ofx"
 
