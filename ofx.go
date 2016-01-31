@@ -3,6 +3,8 @@ package ofx
 import (
 	"encoding/xml"
 	"io"
+	"strconv"
+	"strings"
 
 	"github.com/luizbranco/ofx/internal/paired"
 )
@@ -13,6 +15,7 @@ type Language string
 type TransactionUID string
 type CurrencySymbol string
 type FITID string
+type Amount float64
 
 type AccountType string
 
@@ -36,7 +39,7 @@ type Status struct {
 }
 
 type Balance struct {
-	Amount        float64  `xml:"BALAMT"`
+	Amount        Amount   `xml:"BALAMT"`
 	EffectiveDate DateTime `xml:"DTASOF"`
 }
 
@@ -54,4 +57,26 @@ func Parse(in io.Reader) (*OFX, error) {
 	}
 	err = xml.Unmarshal(f, &ofx)
 	return ofx, err
+}
+
+// UnmarshalXML tries to unmarshal the amount using a decimal point or comma
+// separator
+func (a *Amount) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	var s string
+	err := d.DecodeElement(&s, &start)
+	if err != nil {
+		return err
+	}
+	v, err := strconv.ParseFloat(s, 64)
+	if err == nil {
+		*a = Amount(v)
+		return nil
+	}
+	s = strings.Replace(s, ",", ".", 1)
+	v, nerr := strconv.ParseFloat(s, 64)
+	if nerr == nil {
+		*a = Amount(v)
+		return nil
+	}
+	return err
 }

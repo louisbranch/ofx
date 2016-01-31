@@ -34,7 +34,7 @@ type Transaction struct {
 	DatePosted        DateTime        `xml:"DTPOSTED"`
 	DateUser          DateTime        `xml:"DTUSER,omitempty"`
 	DateAvailable     DateTime        `xml:"DTAVAIL,omitempty"`
-	TransactionAmount float64         `xml:"TRNAMT"`
+	Amount            Amount          `xml:"TRNAMT"`
 	FITID             FITID           `xml:"FITID"`
 	CorrectFITID      FITID           `xml:"CORRECTFITID,omitempty"`
 	CorrectAction     CorrectAction   `xml:"CORRECTACTION,omitempty"`

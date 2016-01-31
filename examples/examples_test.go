@@ -20,6 +20,7 @@ func TestParse(t *testing.T) {
 		{"desjardins.ofx", Desjardins},
 		{"response.ofx", Response},
 		{"ing.qfx", Ing},
+		{"fortis.ofx", Fortis},
 	}
 
 	for _, eg := range egs {

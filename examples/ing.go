@@ -38,12 +38,12 @@ var Ing = &ofx.OFX{
 						DateEnd:   ofx.Date("20080222190000.000[-5:EST]"),
 						Transactions: []ofx.Transaction{
 							{
-								TransactionType:   ofx.Credit,
-								DatePosted:        ofx.DateTime("20050923120000.000"),
-								TransactionAmount: 100,
-								FITID:             "4",
-								Name:              "Dépôt",
-								Memo:              "81530219 3893476",
+								TransactionType: ofx.Credit,
+								DatePosted:      ofx.DateTime("20050923120000.000"),
+								Amount:          100,
+								FITID:           "4",
+								Name:            "Dépôt",
+								Memo:            "81530219 3893476",
 							},
 						},
 					},
