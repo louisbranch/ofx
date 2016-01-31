@@ -16,13 +16,14 @@ func TestParse(t *testing.T) {
 		file string
 		res  *ofx.OFX
 	}{
-		{"ccstmtrs", CCStmtRs},
-		{"desjardins", Desjardins},
-		{"response", Response},
+		{"ccstmtrs.ofx", CCStmtRs},
+		{"desjardins.ofx", Desjardins},
+		{"response.ofx", Response},
+		{"ing.qfx", Ing},
 	}
 
 	for _, eg := range egs {
-		in, err := os.Open(fmt.Sprintf("%s.ofx", eg.file))
+		in, err := os.Open(fmt.Sprintf("%s", eg.file))
 		if err != nil {
 			t.Fatal(err)
 		}

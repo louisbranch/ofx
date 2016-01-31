@@ -7,15 +7,22 @@ import (
 	"os"
 	"path"
 	"testing"
+
+	"golang.org/x/text/encoding/charmap"
+	"golang.org/x/text/transform"
 )
 
 func TestEndTags(t *testing.T) {
-	egs := []bool{true, true}
+	egs := []bool{true, true, true}
 
 	for i, ok := range egs {
 		var buf bytes.Buffer
 		in, _ := os.Open(path.Join("examples", fmt.Sprintf("in_%d.ofx", i)))
-		out, _ := ioutil.ReadFile(path.Join("examples", fmt.Sprintf("out_%d.ofx", i)))
+		f, _ := os.Open(path.Join("examples", fmt.Sprintf("out_%d.ofx", i)))
+
+		tr := charmap.Windows1252
+		r := transform.NewReader(f, tr.NewDecoder())
+		out, _ := ioutil.ReadAll(r)
 
 		for _, l := range bytes.Split(out, []byte("\n")) {
 			buf.Write(bytes.TrimSpace(l))

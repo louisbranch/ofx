@@ -48,6 +48,7 @@ func EndTags(in io.Reader) ([]byte, error) {
 			n := t.Name.Local
 			if prev.content != "" && prev.name != n {
 				fmt.Fprintf(&buf, `</%s>`, prev.name)
+				prev.content = ""
 			}
 			fmt.Fprintf(&buf, `</%s>`, n)
 		}
