@@ -22,7 +22,7 @@ var CCStmtRs = &ofx.OFX{
 					Severity: ofx.Info,
 				},
 				CreditCardStatementResponse: ofx.CreditCardStatementResponse{
-					CurrencyDefault: ofx.CurrencySymbol("EUR"),
+					CurrencyDefault: ofx.Currency("EUR"),
 					CreditCardAccount: ofx.CreditCardAccount{
 						ID: "4XXXXXXXXXXXXXX5",
 					},
@@ -67,7 +67,7 @@ var CCStmtRs = &ofx.OFX{
 					Severity: ofx.Info,
 				},
 				CreditCardStatementResponse: ofx.CreditCardStatementResponse{
-					CurrencyDefault: ofx.CurrencySymbol("EUR"),
+					CurrencyDefault: ofx.Currency("EUR"),
 					CreditCardAccount: ofx.CreditCardAccount{
 						ID: "4XXXXXXXXXXXXXX9",
 					},

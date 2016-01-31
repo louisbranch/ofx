@@ -25,7 +25,7 @@ var Desjardins3 = &ofx.OFX{
 					Message:  "OK",
 				},
 				BankStatementResponse: ofx.BankStatementResponse{
-					CurrencyDefault: ofx.CurrencySymbol("USD"),
+					CurrencyDefault: ofx.Currency("USD"),
 					BankingAccount: ofx.BankingAccount{
 						BankID:      "1234",
 						BranchID:    "5678",

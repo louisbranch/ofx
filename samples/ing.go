@@ -27,7 +27,7 @@ var Ing = &ofx.OFX{
 					Severity: ofx.Info,
 				},
 				BankStatementResponse: ofx.BankStatementResponse{
-					CurrencyDefault: ofx.CurrencySymbol("CAD"),
+					CurrencyDefault: ofx.Currency("CAD"),
 					BankingAccount: ofx.BankingAccount{
 						BankID:      "0614",
 						ID:          "123456",

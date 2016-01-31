@@ -12,7 +12,7 @@ type CreditCardResponse struct {
 }
 
 type CreditCardStatementResponse struct {
-	CurrencyDefault      CurrencySymbol       `xml:"CURDEF"`
+	CurrencyDefault      Currency             `xml:"CURDEF"`
 	CreditCardAccount    CreditCardAccount    `xml:"CCACCTFROM"`
 	BankTransactionsList BankTransactionsList `xml:"BANKTRANLIST,omitempty"`
 	LedgerBalance        Balance              `xml:"LEDGERBAL"`

@@ -12,7 +12,7 @@ type BankingResponse struct {
 }
 
 type BankStatementResponse struct {
-	CurrencyDefault      CurrencySymbol       `xml:"CURDEF"`
+	CurrencyDefault      Currency             `xml:"CURDEF"`
 	BankingAccount       BankingAccount       `xml:"BANKACCTFROM"`
 	BankTransactionsList BankTransactionsList `xml:"BANKTRANLIST,omitempty"`
 	LedgerBalance        Balance              `xml:"LEDGERBAL"`

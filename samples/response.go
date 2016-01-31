@@ -27,7 +27,7 @@ var Response = &ofx.OFX{
 					Severity: ofx.Info,
 				},
 				BankStatementResponse: ofx.BankStatementResponse{
-					CurrencyDefault: ofx.CurrencySymbol("USD"),
+					CurrencyDefault: ofx.Currency("USD"),
 					BankingAccount: ofx.BankingAccount{
 						BankID:      "987654321",
 						ID:          "098-121",

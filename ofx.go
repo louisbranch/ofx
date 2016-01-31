@@ -13,7 +13,7 @@ type Date string //YYYYMMDD
 type DateTime string
 type Language string
 type TransactionUID string
-type CurrencySymbol string
+type Currency string
 type FITID string
 type Amount float64
 

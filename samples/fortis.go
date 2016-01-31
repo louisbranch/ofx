@@ -26,7 +26,7 @@ var Fortis = &ofx.OFX{
 					Severity: ofx.Info,
 				},
 				BankStatementResponse: ofx.BankStatementResponse{
-					CurrencyDefault: ofx.CurrencySymbol("EUR"),
+					CurrencyDefault: ofx.Currency("EUR"),
 					BankingAccount: ofx.BankingAccount{
 						BankID:      "FORTIS",
 						ID:          "001-5587496-84",
