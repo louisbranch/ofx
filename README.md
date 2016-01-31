@@ -1,11 +1,10 @@
 # OFX [![Build Status](https://drone.io/github.com/luizbranco/ofx/status.png)](https://drone.io/github.com/luizbranco/ofx/latest) [![GoDoc](https://godoc.org/github.com/luizbranco/ofx?status.svg)](https://godoc.org/github.com/luizbranco/ofx)
 
-Open Financial Exchange (OFX) response reader in go. Compatible with versions 1.02 and
-1.03.
+Open Financial Exchange (OFX) response reader in go. Compatible with OFX / QFX(Intuit) versions 1.02, 1.03 and 1.06.
 
 ## Response Services
 
-- [ ] Sign On
+- [x] Sign On
 - [x] Banking
 - [x] Credit Card
 - [ ] Payments
@@ -43,3 +42,9 @@ func main() {
 ```shell
 go run main.go example.ofx
 ```
+
+## TODO (Contributions welcomed)
+
+- [ ] Add more samples from different banks
+- [ ] Match OFX type specs for each element
+
