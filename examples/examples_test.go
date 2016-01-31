@@ -18,6 +18,8 @@ func TestParse(t *testing.T) {
 	}{
 		{"ccstmtrs.ofx", CCStmtRs},
 		{"desjardins.ofx", Desjardins},
+		{"desjardins2.ofx", Desjardins2},
+		{"desjardins3.ofx", Desjardins3},
 		{"response.ofx", Response},
 		{"ing.qfx", Ing},
 		{"fortis.ofx", Fortis},

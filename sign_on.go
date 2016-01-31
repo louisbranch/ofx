@@ -10,6 +10,7 @@ type SignOnResponse struct {
 	Language             Language             `xml:"LANGUAGE"`
 	DateAccountUp        DateTime             `xml:"DTACCTUP,omitempty"`
 	FinancialInstitution FinancialInstitution `xml:"FI,omitempty"`
+	UserKey              string               `xml:"USERKEY,omitempty"`
 }
 
 type FinancialInstitution struct {

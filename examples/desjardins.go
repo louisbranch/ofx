@@ -11,6 +11,7 @@ var Desjardins = &ofx.OFX{
 				Message:  "OK",
 			},
 			DateTimeServer: ofx.DateTime("20080212"),
+			UserKey:        "61775520C2D1F127",
 			Language:       ofx.Language("ENG"),
 		},
 	},
