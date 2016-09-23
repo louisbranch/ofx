@@ -2,11 +2,8 @@ package ofx
 
 import (
 	"encoding/xml"
-	"io"
 	"strconv"
 	"strings"
-
-	"github.com/luizbranco/ofx/internal/paired"
 )
 
 type Date string //YYYYMMDD
@@ -47,16 +44,6 @@ type BankTransactionsList struct {
 	DateStart    Date          `xml:"DTSTART"`
 	DateEnd      Date          `xml:"DTEND"`
 	Transactions []Transaction `xml:"STMTTRN"`
-}
-
-func Parse(in io.Reader) (*OFX, error) {
-	ofx := &OFX{}
-	f, err := paired.EndTags(in)
-	if err != nil {
-		return nil, err
-	}
-	err = xml.Unmarshal(f, &ofx)
-	return ofx, err
 }
 
 // UnmarshalXML tries to unmarshal the amount using a decimal point or comma

@@ -1,4 +1,4 @@
-package paired
+package ofx
 
 import (
 	"bytes"
@@ -13,7 +13,18 @@ import (
 	"golang.org/x/text/transform"
 )
 
-func EndTags(in io.Reader) ([]byte, error) {
+func Parse(in io.Reader) (*OFX, error) {
+	txt, err := endTags(in)
+	if err != nil {
+		return nil, err
+	}
+
+	ofx := &OFX{}
+	err = xml.Unmarshal(txt, &ofx)
+	return ofx, err
+}
+
+func endTags(in io.Reader) ([]byte, error) {
 	var buf bytes.Buffer
 
 	in, err := encode(in)
@@ -59,6 +70,7 @@ func EndTags(in io.Reader) ([]byte, error) {
 			fmt.Fprintf(&buf, `</%s>`, n)
 		}
 	}
+
 	return buf.Bytes(), nil
 }
 
