@@ -5,6 +5,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
+	"io/ioutil"
+	"regexp"
 	"strings"
 
 	"golang.org/x/text/encoding/charmap"
@@ -12,11 +14,15 @@ import (
 )
 
 func EndTags(in io.Reader) ([]byte, error) {
-	t := charmap.Windows1252
-	r := transform.NewReader(in, t.NewDecoder())
-	dec := xml.NewDecoder(r)
-
 	var buf bytes.Buffer
+
+	in, err := encode(in)
+	if err != nil {
+		return nil, err
+	}
+
+	dec := xml.NewDecoder(in)
+
 	var prev struct {
 		name    string
 		content string
@@ -54,4 +60,24 @@ func EndTags(in io.Reader) ([]byte, error) {
 		}
 	}
 	return buf.Bytes(), nil
+}
+
+func encode(in io.Reader) (io.Reader, error) {
+	tmp, err := ioutil.ReadAll(in)
+	if err != nil {
+		return nil, err
+	}
+
+	t := charmap.Windows1252
+
+	tmp, _, err = transform.Bytes(t.NewDecoder(), tmp)
+	if err != nil {
+		return nil, err
+	}
+
+	// sanitize replaces malformated XML with unescaped & => &amp;
+	re := regexp.MustCompile("&(\\s)")
+	tmp = re.ReplaceAll(tmp, []byte("&amp;$1"))
+
+	return bytes.NewReader(tmp), nil
 }

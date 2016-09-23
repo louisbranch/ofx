@@ -19,6 +19,6 @@ func main() {
 		if err != nil {
 			log.Fatalf("error parsing file %s, %s", a, err)
 		}
-		fmt.Printf("%s", t)
+		fmt.Printf("%+v", t)
 	}
 }

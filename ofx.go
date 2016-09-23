@@ -33,9 +33,9 @@ type OFX struct {
 }
 
 type Status struct {
-	Code     StatusCode `xml:"CODE"`
-	Severity Severity   `xml:"SEVERITY"`
-	Message  string     `xml:"MESSAGE,omitempty"`
+	Code     int      `xml:"CODE"`
+	Severity Severity `xml:"SEVERITY"`
+	Message  string   `xml:"MESSAGE,omitempty"`
 }
 
 type Balance struct {
