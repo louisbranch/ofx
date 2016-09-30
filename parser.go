@@ -58,7 +58,7 @@ func endTags(in io.Reader) ([]byte, error) {
 		case xml.CharData:
 			s := strings.TrimSpace(string(t))
 			if s != "" {
-				fmt.Fprintf(&buf, "%s", s)
+				xml.Escape(&buf, []byte(s))
 			}
 			prev.content = s
 		case xml.EndElement:
@@ -88,8 +88,13 @@ func encode(in io.Reader) (io.Reader, error) {
 	}
 
 	// sanitize replaces malformated XML with unescaped & => &amp;
-	re := regexp.MustCompile("&(\\s)")
-	tmp = re.ReplaceAll(tmp, []byte("&amp;$1"))
+	re := regexp.MustCompile(`&[^&]{0,4}`)
+	tmp = re.ReplaceAllFunc(tmp, func(m []byte) []byte {
+		if bytes.Equal(m, []byte("&amp;")) {
+			return m
+		}
+		return bytes.Replace(m, []byte("&"), []byte("&amp;"), -1)
+	})
 
 	return bytes.NewReader(tmp), nil
 }

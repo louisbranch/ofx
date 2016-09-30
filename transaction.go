@@ -51,6 +51,6 @@ type Transaction struct {
 			BANKACCTTO
 			CCACCTTO
 			CURRENCY
-			ORIFINALCURRENCY
+			OFICINALCURRENCY
 	*/
 }
