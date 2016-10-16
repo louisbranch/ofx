@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Date string //YYYYMMDD
@@ -66,4 +67,9 @@ func (a *Amount) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 		return nil
 	}
 	return err
+}
+
+func (d DateTime) Time() time.Time {
+	t, _ := time.Parse("20060102150505", string(d))
+	return t
 }
